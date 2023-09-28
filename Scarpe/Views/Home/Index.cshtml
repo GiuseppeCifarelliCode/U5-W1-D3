@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Scarpe.Models.Scarpa>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>Benvenuto @User.Identity.Name</h3>
+<h2>Lista Prodotti</h2>
+
+<div class="row row-cols-3">
+    @foreach (Scarpe.Models.Scarpa scarpa in Model)
+    {
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="../Content/assets/@scarpa.CoverImg" class="card-img-top" alt="@scarpa.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@scarpa.Name</h5>
+                    <p class="card-text">
+                        Prezzo:
+                        $@scarpa.Price
+                    </p>
+                    @Html.ActionLink("Dettaglio", "Detail", new { id = @scarpa.Id })
+                </div>
+            </div>
+        </div>
+    }
+</div>
